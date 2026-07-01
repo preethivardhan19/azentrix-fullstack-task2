@@ -1,0 +1,17 @@
+{
+  "name": "azentrix-fullstack-task2",
+  "version": "1.0.0",
+  "description": "Mini Trello style task collaboration app for Azentrix full stack intern task.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "task-management",
+    "kanban",
+    "internship-task"
+  ],
+  "author": "",
+  "license": "MIT"
+}

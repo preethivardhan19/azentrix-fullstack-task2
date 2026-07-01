@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TaskFlow Board</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <section class="auth-screen" id="authScreen">
+      <div class="auth-card">
+        <p class="eyebrow">Mini Trello</p>
+        <h1>TaskFlow Board</h1>
+        <p class="intro">A lightweight task collaboration app for small remote teams.</p>
+
+        <div class="auth-tabs">
+          <button class="tab-button active" data-auth-tab="login" type="button">Login</button>
+          <button class="tab-button" data-auth-tab="register" type="button">Register</button>
+        </div>
+
+        <form id="loginForm" class="auth-form">
+          <label>
+            Email
+            <input name="email" type="email" value="admin@example.com" required>
+          </label>
+          <label>
+            Password
+            <input name="password" type="password" value="Admin@123" required>
+          </label>
+          <button class="primary-button" type="submit">Login</button>
+        </form>
+
+        <form id="registerForm" class="auth-form hidden">
+          <label>
+            Name
+            <input name="name" type="text" placeholder="Your name" required>
+          </label>
+          <label>
+            Email
+            <input name="email" type="email" placeholder="you@example.com" required>
+          </label>
+          <label>
+            Password
+            <input name="password" type="password" placeholder="Minimum 6 characters" required>
+          </label>
+          <button class="primary-button" type="submit">Create Account</button>
+        </form>
+
+        <div class="demo-box">
+          <strong>Demo accounts</strong>
+          <span>Admin: admin@example.com / Admin@123</span>
+          <span>Member: member@example.com / Member@123</span>
+        </div>
+        <p class="message" id="authMessage"></p>
+      </div>
+    </section>
+
+    <section class="app hidden" id="app">
+      <aside class="sidebar">
+        <div>
+          <p class="eyebrow">TaskFlow</p>
+          <h2 id="boardName">Board</h2>
+        </div>
+        <div class="user-card">
+          <span id="userName">User</span>
+          <small id="userRole">member</small>
+        </div>
+        <button class="secondary-button" id="logoutButton" type="button">Logout</button>
+      </aside>
+
+      <main class="workspace">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Team Board</p>
+            <h1>Website Launch</h1>
+          </div>
+          <div class="topbar-actions">
+            <span class="sync-pill" id="syncStatus">Synced</span>
+            <button class="primary-button" id="newCardButton" type="button">New Card</button>
+          </div>
+        </header>
+
+        <section class="board" id="board" aria-label="Kanban board"></section>
+
+        <section class="admin-panel hidden" id="adminPanel">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Admin</p>
+              <h2>User Management</h2>
+            </div>
+          </div>
+          <div class="user-list" id="userList"></div>
+        </section>
+      </main>
+    </section>
+
+    <dialog id="cardDialog">
+      <form id="cardForm" method="dialog" class="card-form">
+        <div class="dialog-heading">
+          <div>
+            <p class="eyebrow">Card</p>
+            <h2 id="dialogTitle">New Card</h2>
+          </div>
+          <button class="icon-button" id="closeDialog" type="button" aria-label="Close">x</button>
+        </div>
+        <input id="cardId" name="id" type="hidden">
+        <label>
+          Title
+          <input id="cardTitle" name="title" type="text" required>
+        </label>
+        <label>
+          Description
+          <textarea id="cardDescription" name="description" rows="4"></textarea>
+        </label>
+        <div class="form-grid">
+          <label>
+            Column
+            <select id="cardColumn" name="column">
+              <option value="todo">To Do</option>
+              <option value="progress">In Progress</option>
+              <option value="done">Done</option>
+            </select>
+          </label>
+          <label>
+            Priority
+            <select id="cardPriority" name="priority">
+              <option value="low">Low</option>
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
+            </select>
+          </label>
+        </div>
+        <div class="form-grid">
+          <label>
+            Assignee
+            <select id="cardAssignee" name="assigneeId"></select>
+          </label>
+          <label>
+            Due Date
+            <input id="cardDueDate" name="dueDate" type="date">
+          </label>
+        </div>
+        <p class="message" id="cardMessage"></p>
+        <div class="dialog-actions">
+          <button class="danger-button hidden" id="deleteCardButton" type="button">Delete</button>
+          <button class="primary-button" type="submit">Save Card</button>
+        </div>
+      </form>
+    </dialog>
+
+    <script src="app.js"></script>
+  </body>
+</html>
