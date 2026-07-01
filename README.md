@@ -92,7 +92,7 @@ Start command: npm start
 
 After deployment, add the live link here:
 
-Live demo: _Add deployed link_
+Live demo:  https://azentrix-fullstack-task2-27hg.onrender.com
 
 ## Loom Demo Checklist
 
